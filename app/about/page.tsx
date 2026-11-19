@@ -39,7 +39,7 @@ export default async function AboutPage() {
   return (
     <main className="w-full bg-[#F9F8F6] text-[#141413]">
       {/* 1. EDITORIAL HERO SECTION */}
-      <section className="pt-20 md:pt-28 pb-16 md:pb-24 px-6 md:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
+      <section className="pt-20 md:pt-28 pb-16 md:pb-24 px-5 sm:px-6 md:px-10 lg:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
         <div className="max-w-3xl">
           <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-4">
             ABOUT BLACKO STORES • LAGOS
@@ -78,7 +78,7 @@ export default async function AboutPage() {
       </section>
 
       {/* 2. THREE ATELIER PILLARS */}
-      <section className="py-20 md:py-28 px-6 md:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
+      <section className="py-20 md:py-28 px-5 sm:px-6 md:px-10 lg:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-2">
@@ -142,7 +142,7 @@ export default async function AboutPage() {
       </section>
 
       {/* 3. ATELIER GARMENT SPRITE STRIP */}
-      <section className="py-20 md:py-28 px-6 md:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
+      <section className="py-20 md:py-28 px-5 sm:px-6 md:px-10 lg:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-2">
@@ -200,7 +200,7 @@ export default async function AboutPage() {
       </section>
 
       {/* 4. LEKKI STUDIO MANIFESTO BANNER */}
-      <section className="py-20 md:py-28 px-6 md:px-12 max-w-4xl mx-auto text-center">
+      <section className="py-20 md:py-28 px-5 sm:px-6 md:px-10 lg:px-12 max-w-4xl mx-auto text-center">
         <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-4">
           LEKKI PHASE 1 • LAGOS, NIGERIA
         </p>

@@ -9,17 +9,19 @@
   --hairline: rgba(20, 20, 19, 0.12);
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  background: var(--bg-canvas);
-  color: var(--ink-primary);
-  overflow-x: hidden;
-  user-select: none;
-  touch-action: pan-y;
+  body {
+    margin: 0;
+    background: var(--bg-canvas);
+    color: var(--ink-primary);
+    overflow-x: hidden;
+    user-select: none;
+    touch-action: pan-y;
+  }
 }
 
 .studio-backdrop {

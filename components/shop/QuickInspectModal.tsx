@@ -102,7 +102,7 @@ export default function QuickInspectModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-5 sm:p-6 md:p-8 animate-in fade-in duration-200">
       {/* Blurred Dim Backdrop */}
       <div
         onClick={onClose}

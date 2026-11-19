@@ -141,11 +141,13 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
       <div className="flex-1 w-full relative z-40">{children}</div>
 
       {/* Global Persistent Physical Weekender Bag Dock */}
-      <CustomBagDock
-        items={bagItems}
-        dockRef={bagDockRef}
-        onOpenDrawer={() => setDrawerOpen(true)}
-      />
+      {!pathname?.startsWith("/admin") && (
+        <CustomBagDock
+          items={bagItems}
+          dockRef={bagDockRef}
+          onOpenDrawer={() => setDrawerOpen(true)}
+        />
+      )}
 
       {/* Global Slide-Over Naira Receipt & Paystack Drawer */}
       <BagDrawer

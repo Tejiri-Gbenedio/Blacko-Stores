@@ -111,7 +111,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
       )}
 
       {/* Main Page Flow */}
-      <div className="flex-1 w-full relative">{children}</div>
+      <div className="flex-1 w-full relative z-40">{children}</div>
 
       {/* Global Persistent Physical Weekender Bag Dock */}
       <CustomBagDock

@@ -30,7 +30,7 @@ export default function InspectPanel({
       ref={panelRef}
       className={
         (visible ? "flex" : "hidden") +
-        " fixed top-20 sm:top-24 right-4 sm:right-8 md:right-12 lg:right-16 bottom-8 w-[min(400px,90vw)] z-[45] flex-col justify-center px-2 md:px-0 max-md:top-auto max-md:bottom-4 max-md:w-[calc(100vw-2rem)]"
+        " fixed top-20 sm:top-24 right-4 sm:right-8 md:right-12 lg:right-20 xl:right-24 bottom-8 w-[min(390px,90vw)] z-50 flex-col justify-center px-2 md:px-0 max-md:top-auto max-md:bottom-4 max-md:w-[calc(100vw-2rem)]"
       }
     >
       <div className="bg-white/85 backdrop-blur-md border border-[#141413]/10 p-5 md:p-6 shadow-[0_24px_48px_rgba(0,0,0,0.06)] max-h-[calc(100vh-7.5rem)] overflow-y-auto">

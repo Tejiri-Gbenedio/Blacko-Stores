@@ -30,10 +30,10 @@ export default function InspectPanel({
       ref={panelRef}
       className={
         (visible ? "flex" : "hidden") +
-        " fixed top-24 bottom-8 md:right-[24vw] w-[min(390px,42vw)] z-30 flex-col justify-center max-md:right-4 max-md:left-4 max-md:top-auto max-md:bottom-4 max-md:w-auto"
+        " fixed top-24 bottom-8 md:right-[24vw] w-[min(390px,42vw)] z-30 flex-col justify-center max-md:top-[42vh] max-md:bottom-3 max-md:left-3 max-md:right-3 max-md:w-auto max-md:max-h-[55vh] max-md:overflow-y-auto max-md:z-40"
       }
     >
-      <div className="bg-white/85 backdrop-blur-md border border-[#141413]/10 p-5 md:p-6 shadow-[0_24px_48px_rgba(0,0,0,0.06)] max-h-[calc(100vh-7.5rem)] overflow-y-auto">
+      <div className="bg-white/85 backdrop-blur-md border border-[#141413]/10 p-5 md:p-6 shadow-[0_24px_48px_rgba(0,0,0,0.06)] max-h-[calc(100vh-7.5rem)] max-md:max-h-full overflow-y-auto">
         <div className="flex items-center justify-between border-b border-[var(--hairline)] pb-3.5 mb-4">
           <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--ink-muted)]">
             Hanger View
@@ -64,9 +64,6 @@ export default function InspectPanel({
           </div>
         </div>
 
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--ink-muted)]">
-          {garment.lotLabel}
-        </p>
         <h2 className="font-editorial text-3xl md:text-4xl font-medium mt-1 leading-tight">
           {garment.title}
         </h2>

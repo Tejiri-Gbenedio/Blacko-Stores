@@ -177,10 +177,7 @@ export default function QuickInspectModal({
         {/* Right: Garment Specs, Size Selector & Bag CTA */}
         <div className="w-full md:w-1/2 p-7 md:p-9 flex flex-col justify-between overflow-y-auto">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--ink-muted)]">
-              {garment.lotLabel}
-            </p>
-            <h3 className="font-editorial text-3xl md:text-4xl font-medium tracking-tight mt-1 text-[#141413]">
+            <h3 className="font-editorial text-3xl md:text-4xl font-medium tracking-tight text-[#141413]">
               {garment.title}
             </h3>
             <p className="font-mono text-base md:text-lg text-[#141413]/90 mt-2">

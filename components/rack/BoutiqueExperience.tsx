@@ -334,8 +334,8 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
           activeSlot,
           {
             x: window.innerWidth < 768 ? 0 : -window.innerWidth * 0.14,
-            y: window.innerWidth < 768 ? -42 : 12,
-            scale: window.innerWidth < 768 ? 0.86 : 1.07,
+            y: window.innerWidth < 768 ? -75 : 12,
+            scale: window.innerWidth < 768 ? 0.62 : 1.07,
             duration: 0.62,
             ease: "power3.inOut",
           },
@@ -590,10 +590,8 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
           }
         >
           <div>
-            <div className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--ink-muted)] mb-1">
-              <span>{activeGarment.lotLabel}</span>
-              <span>•</span>
-              <span className="text-[#141413]">
+            <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--ink-muted)] mb-1.5">
+              <span>
                 {String(activeIndex + 1).padStart(2, "0")} /{" "}
                 {String(garments.length).padStart(2, "0")}
               </span>

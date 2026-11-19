@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useBag } from "@/components/bag/BagContext";
@@ -15,10 +15,15 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
     setDrawerOpen,
     removeFromBag,
     bagDockRef,
+    mobileBagBtnRef,
     toastMessage,
   } = useBag();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -30,7 +35,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
   return (
     <div className="min-h-screen w-full relative flex flex-col">
       {/* Sticky Global Navigation Bar */}
-      <header className="sticky top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 h-16 md:h-18 bg-[#F9F8F6]/85 backdrop-blur-md border-b border-[var(--hairline)] transition-colors">
+      <header className="sticky top-0 left-0 right-0 z-[90] flex items-center justify-between px-6 md:px-10 h-16 md:h-18 bg-[#F9F8F6]/85 backdrop-blur-md border-b border-[var(--hairline)] transition-colors">
         {/* Left: Nav Links */}
         <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => {
@@ -82,6 +87,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
         {/* Right: Custom Bag Pill */}
         <div className="flex items-center gap-4">
           <button
+            ref={mobileBagBtnRef}
             onClick={() => setDrawerOpen(true)}
             className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#141413]/25 hover:border-[#141413] hover:bg-[#141413]/5 transition text-xs tracking-[0.14em] uppercase font-medium"
           >
@@ -94,20 +100,33 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Menu Backdrop & Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-[#F9F8F6] border-b border-[var(--hairline)] px-6 py-5 flex flex-col gap-4 shadow-lg">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-xs uppercase tracking-[0.22em] font-medium text-[#141413] py-1.5 border-b border-[var(--hairline)]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+        <>
+          <div
+            id="mobile-menu-backdrop"
+            onClick={() => setMobileMenuOpen(false)}
+            className="md:hidden fixed inset-0 top-[64px] z-[95] bg-black/25 backdrop-blur-[2px]"
+            aria-hidden="true"
+          />
+          <div
+            id="mobile-menu-overlay"
+            className="md:hidden fixed inset-x-0 top-[64px] z-[100] bg-[#F9F8F6] border-b border-[var(--hairline)] px-6 py-6 flex flex-col gap-4 shadow-xl"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => {
+                  setTimeout(() => setMobileMenuOpen(false), 10);
+                }}
+                className="text-xs uppercase tracking-[0.22em] font-medium text-[#141413] py-2 border-b border-[var(--hairline)] hover:opacity-70 transition block"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </>
       )}
 
       {/* Main Page Flow */}

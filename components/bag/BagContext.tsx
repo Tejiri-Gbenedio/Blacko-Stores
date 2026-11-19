@@ -23,6 +23,7 @@ export interface BagContextValue {
   ) => Promise<void>;
   removeFromBag: (id: string) => Promise<void>;
   bagDockRef: React.RefObject<HTMLDivElement | null>;
+  mobileBagBtnRef: React.RefObject<HTMLButtonElement | null>;
   flyToBag: (
     sourceEl: HTMLElement,
     foldedImgUrl: string,
@@ -39,6 +40,7 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const bagDockRef = useRef<HTMLDivElement | null>(null);
+  const mobileBagBtnRef = useRef<HTMLButtonElement | null>(null);
   const toastTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const clearToast = useCallback(() => {
@@ -81,18 +83,36 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
   const flyToBag = useCallback(
     (sourceEl: HTMLElement, foldedImgUrl: string, onLand?: () => void) => {
       const bagDock = bagDockRef.current;
-      if (!sourceEl || !bagDock) {
+      const mobileBagBtn = mobileBagBtnRef.current;
+      const isMobile =
+        typeof window !== "undefined" &&
+        (window.innerWidth < 768 ||
+          !bagDock ||
+          window.getComputedStyle(bagDock).display === "none");
+
+      const targetEl = isMobile && mobileBagBtn ? mobileBagBtn : bagDock;
+      if (!sourceEl || !targetEl) {
         onLand?.();
         return;
       }
 
       const sourceRect = sourceEl.getBoundingClientRect();
-      const bagRect = bagDock.getBoundingClientRect();
+      const targetRect = targetEl.getBoundingClientRect();
 
       const startW = Math.min(220, Math.max(120, sourceRect.width * 0.62));
       const startX = sourceRect.left + (sourceRect.width - startW) / 2;
       const startY = sourceRect.top + Math.max(10, (sourceRect.height - startW) * 0.35);
-      const targetScale = (bagRect.width * 0.46) / startW;
+
+      const targetW = isMobile ? 32 : targetRect.width * 0.46;
+      const targetScale = targetW / startW;
+
+      const destX = isMobile
+        ? targetRect.left + targetRect.width / 2 - (startW * targetScale) / 2
+        : targetRect.left + targetRect.width * 0.27;
+
+      const destY = isMobile
+        ? targetRect.top + targetRect.height / 2 - (startW * targetScale) / 2
+        : targetRect.top + targetRect.height * 0.34;
 
       const flyer = document.createElement("img");
       flyer.src = foldedImgUrl;
@@ -125,10 +145,10 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
         .to(
           flyer,
           {
-            x: bagRect.left + bagRect.width * 0.27,
-            y: bagRect.top + bagRect.height * 0.34,
+            x: destX,
+            y: destY,
             scale: targetScale,
-            rotation: -4,
+            rotation: isMobile ? 4 : -4,
             duration: 0.32,
             ease: "power3.inOut",
           },
@@ -137,7 +157,7 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
         .to(
           flyer,
           {
-            y: "+=26",
+            y: isMobile ? destY : "+=26",
             opacity: 0.85,
             duration: 0.12,
             ease: "power2.in",
@@ -145,18 +165,27 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
               flyer.remove();
               onLand?.();
 
-              // Elastic squash-and-stretch on the physical bag dock
-              gsap.fromTo(
-                bagDock,
-                { scaleY: 0.91, scaleX: 1.05, y: 4 },
-                {
-                  scaleY: 1,
-                  scaleX: 1,
-                  y: 0,
-                  duration: 0.56,
-                  ease: "elastic.out(1, 0.35)",
-                }
-              );
+              if (isMobile && mobileBagBtn) {
+                // Elastic bounce on the header BAG pill
+                gsap.fromTo(
+                  mobileBagBtn,
+                  { scale: 1.25 },
+                  { scale: 1, duration: 0.52, ease: "elastic.out(1.2, 0.35)" }
+                );
+              } else if (bagDock) {
+                // Elastic squash-and-stretch on the physical bag dock
+                gsap.fromTo(
+                  bagDock,
+                  { scaleY: 0.91, scaleX: 1.05, y: 4 },
+                  {
+                    scaleY: 1,
+                    scaleX: 1,
+                    y: 0,
+                    duration: 0.56,
+                    ease: "elastic.out(1, 0.35)",
+                  }
+                );
+              }
             },
           },
           0.42
@@ -243,6 +272,7 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
         addToBag,
         removeFromBag,
         bagDockRef,
+        mobileBagBtnRef,
         flyToBag,
         toastMessage,
         clearToast,

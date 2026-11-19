@@ -30,7 +30,7 @@ export default function CustomBagDock({
     <div
       ref={dockRef}
       onClick={onOpenDrawer}
-      className={`bag-dock ${isScrolled ? "is-scrolled" : ""}`}
+      className={`bag-dock hidden md:block ${isScrolled ? "is-scrolled" : ""}`}
       title="Open your Blacko Stores Weekender Bag"
     >
       <div className="bag-dock-badge absolute -top-6 right-3 bg-[#141413] text-[#F9F8F6] px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-[0.15em] shadow whitespace-nowrap">

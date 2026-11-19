@@ -68,7 +68,7 @@ export default function BagDrawer({
   }
 
   return (
-    <div className="fixed inset-0 z-50">
+    <div className="fixed inset-0 z-[110]">
       <div
         onClick={onClose}
         className="absolute inset-0 bg-black/30 backdrop-blur-sm"

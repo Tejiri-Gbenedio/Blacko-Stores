@@ -23,7 +23,8 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [pathname]);
+    setDrawerOpen(false);
+  }, [pathname, setDrawerOpen]);
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -66,7 +67,11 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
         {/* Mobile Hamburger Button */}
         <div className="md:hidden flex items-center">
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              const nextState = !mobileMenuOpen;
+              setMobileMenuOpen(nextState);
+              if (nextState) setDrawerOpen(false);
+            }}
             className="p-1.5 text-xs uppercase tracking-widest font-mono text-[#141413]"
             aria-label="Toggle menu"
           >
@@ -88,7 +93,10 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
         <div className="flex items-center gap-4">
           <button
             ref={mobileBagBtnRef}
-            onClick={() => setDrawerOpen(true)}
+            onClick={() => {
+              setDrawerOpen(!drawerOpen);
+              setMobileMenuOpen(false);
+            }}
             className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#141413]/25 hover:border-[#141413] hover:bg-[#141413]/5 transition text-xs tracking-[0.14em] uppercase font-medium"
           >
             <span className="hidden sm:inline">Custom Bag</span>

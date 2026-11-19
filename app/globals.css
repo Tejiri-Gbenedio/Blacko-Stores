@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #F9F8F6;
+  --ink-primary: #141413;
+  --ink-muted: #76746E;
+  --hairline: rgba(20, 20, 19, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-canvas);
+  color: var(--ink-primary);
+  overflow-x: hidden;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.studio-backdrop {
+  background: radial-gradient(circle at 46% 38%, #FFFFFF 0%, #F7F5F0 58%, #ECE8DF 100%);
+}
+
+.steel-rail {
+  position: absolute;
+  width: 150vw;
+  height: 11px;
+  left: -20vw;
+  top: 23vh;
+  transform: rotate(-11deg);
+  transform-origin: center center;
+  background: linear-gradient(180deg, #6E6D68 0%, #E7E5DF 34%, #FFFFFF 52%, #8A8882 82%, #3D3C39 100%);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  z-index: 5;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.rail-flange {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #F2F0EC, #787670);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+  z-index: 6;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.hanger-slot {
+  position: absolute;
+  top: clamp(128px, 19.5vh, 210px);
+  left: clamp(20px, 31vw, 480px);
+  width: clamp(250px, 30vw, 420px);
+  aspect-ratio: 800 / 960;
+  transform-origin: 50% 6.9%;
+  will-change: transform, opacity;
+  cursor: pointer;
+}
+
+.hanger-slot img.shirt-sprite {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 800 / 960;
+  display: block;
+  pointer-events: none;
+  transform-origin: 50% 6.9%;
+  will-change: transform;
+}
+
+.hanger-slot.is-foreground img.shirt-sprite {
+  filter: drop-shadow(0 24px 28px rgba(20, 20, 19, 0.14));
+}
+
+.hanger-slot .hook-contact-shadow {
+  position: absolute;
+  left: 50%;
+  top: 6.9%;
+  width: 9px;
+  height: 3.5px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  filter: blur(1.5px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.bag-dock {
+  position: fixed;
+  right: clamp(12px, 2.2vw, 36px);
+  bottom: -16px;
+  width: clamp(185px, 21vw, 325px);
+  z-index: 40;
+  cursor: pointer;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bag-dock:hover {
+  transform: translateY(-6px);
+}
+
+.bag-layer-back {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 10;
+  filter: drop-shadow(0 20px 26px rgba(20, 20, 19, 0.17));
+}
+
+.bag-packed-stack {
+  position: absolute;
+  left: 20%;
+  top: 24%;
+  width: 60%;
+  height: 30%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.packed-shirt-item {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.22));
+}
+
+.bag-layer-front {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.flying-folded {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 45;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 24px rgba(20, 20, 19, 0.22));
+  will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+  .hanger-slot {
+    left: 14vw;
+    width: 68vw;
+    top: 17vh;
+  }
+  .bag-dock {
+    width: 150px;
+    bottom: -10px;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

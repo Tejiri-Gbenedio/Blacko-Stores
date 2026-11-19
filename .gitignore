@@ -10,3 +10,5 @@ out/
 drizzle/
 raw_boards/
 *.tsbuildinfo
+
+.vercel

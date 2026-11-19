@@ -87,7 +87,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
         </div>
 
         {/* Clean Editorial Manifesto */}
-        <div className="py-20 md:py-28 px-5 sm:px-6 md:px-10 text-center max-w-4xl mx-auto">
+        <div className="py-20 md:py-28 px-6 md:px-10 text-center max-w-4xl mx-auto">
           <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-[var(--ink-muted)] mb-5">
             STUDIO MANIFESTO • DROP 01
           </p>
@@ -103,7 +103,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
       {/* ========================================================= */}
       {/* SECTION 03: The Continuous Studio Catalog (DROP 01)       */}
       {/* ========================================================= */}
-      <section id="catalog" className="w-full px-5 sm:px-6 md:px-10 py-16 md:py-24 border-t border-[var(--hairline)]">
+      <section id="catalog" className="w-full px-6 md:px-10 py-16 md:py-24 border-t border-[var(--hairline)]">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 border-b border-[var(--hairline)] pb-5 gap-3">
           <div>
@@ -233,7 +233,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
       {/* SECTION 04: Best Worn Together (THE WEEKEND PACK)        */}
       {/* ========================================================= */}
       {comboShirt1 && comboShirt2 && (
-        <section className="w-full px-5 sm:px-6 md:px-10 py-16 md:py-24 border-t border-[var(--hairline)] bg-[#F4F3F0]/60">
+        <section className="w-full px-6 md:px-10 py-16 md:py-24 border-t border-[var(--hairline)] bg-[#F4F3F0]/60">
           <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -251,7 +251,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
             {/* Split Combo Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
               {/* Left Shirt */}
-              <div className="bg-[#F9F8F6] p-5 sm:p-6 md:p-8 border border-[#141413]/10 rounded-sm flex flex-col justify-between">
+              <div className="bg-[#F9F8F6] p-6 md:p-8 border border-[#141413]/10 rounded-sm flex flex-col justify-between">
                 <div>
                   <div className="aspect-[4/3] bg-[#EFECE6] relative overflow-hidden rounded-sm mb-4">
                     <img
@@ -298,7 +298,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
               </div>
 
               {/* Right Shirt */}
-              <div className="bg-[#F9F8F6] p-5 sm:p-6 md:p-8 border border-[#141413]/10 rounded-sm flex flex-col justify-between">
+              <div className="bg-[#F9F8F6] p-6 md:p-8 border border-[#141413]/10 rounded-sm flex flex-col justify-between">
                 <div>
                   <div className="aspect-[4/3] bg-[#EFECE6] relative overflow-hidden rounded-sm mb-4">
                     <img
@@ -346,7 +346,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
             </div>
 
             {/* Combined Action Bar */}
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-5 md:p-6 bg-[#141413] text-[#F9F8F6] rounded-sm">
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-[#141413] text-[#F9F8F6] rounded-sm">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A6A49F]">
                   BUNDLE PRICING • 2 ARCHIVAL SHIRTS
@@ -374,7 +374,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
       {/* ========================================================= */}
       {/* SECTION 05: Dark Obsidian Category Runway                 */}
       {/* ========================================================= */}
-      <section className="w-full bg-[#141413] text-[#F9F8F6] py-24 md:py-32 px-5 sm:px-6 md:px-10 lg:px-12">
+      <section className="w-full bg-[#141413] text-[#F9F8F6] py-24 md:py-32 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <p className="font-mono text-xs uppercase tracking-[0.26em] text-[#A6A49F] mb-10 md:mb-14">
             EXPLORE THE TEXTILE ARCHIVE

@@ -36,7 +36,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
   return (
     <div className="min-h-screen w-full relative flex flex-col">
       {/* Sticky Global Navigation Bar */}
-      <header className="sticky top-0 left-0 right-0 z-[90] flex items-center justify-between px-5 sm:px-6 md:px-10 h-16 md:h-18 bg-[#F9F8F6]/85 backdrop-blur-md border-b border-[var(--hairline)] transition-colors">
+      <header className="sticky top-0 left-0 right-0 z-[90] flex items-center justify-between px-6 md:px-10 h-16 md:h-18 bg-[#F9F8F6]/85 backdrop-blur-md border-b border-[var(--hairline)] transition-colors">
         {/* Left: Nav Links */}
         <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => {
@@ -119,7 +119,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
           />
           <div
             id="mobile-menu-overlay"
-            className="md:hidden fixed inset-x-0 top-[64px] z-[100] bg-[#F9F8F6] border-b border-[var(--hairline)] px-5 sm:px-6 py-6 flex flex-col gap-4 shadow-xl"
+            className="md:hidden fixed inset-x-0 top-[64px] z-[100] bg-[#F9F8F6] border-b border-[var(--hairline)] px-6 py-6 flex flex-col gap-4 shadow-xl"
           >
             {navLinks.map((link) => (
               <Link
@@ -138,7 +138,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
       )}
 
       {/* Main Page Flow */}
-      <div className="flex-1 w-full relative z-40">{children}</div>
+      <div className="flex-1 w-full relative z-40 overflow-x-clip">{children}</div>
 
       {/* Global Persistent Physical Weekender Bag Dock */}
       {!pathname?.startsWith("/admin") && (

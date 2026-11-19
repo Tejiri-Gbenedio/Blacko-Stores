@@ -256,7 +256,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
   // -------------------------------------------------------------
   if (!authenticated) {
     return (
-      <main className="min-h-[80vh] w-full flex items-center justify-center px-5 sm:px-6 py-16 bg-[#F9F8F6]">
+      <main className="min-h-[80vh] w-full flex items-center justify-center px-6 py-16 bg-[#F9F8F6]">
         <div className="w-full max-w-md bg-white border border-[#141413]/12 p-8 md:p-10 shadow-[0_20px_48px_rgba(20,20,19,0.06)] rounded-sm">
           <div className="text-center mb-8 border-b border-[var(--hairline)] pb-6">
             <span className="font-mono text-[10px] uppercase tracking-[0.26em] text-[var(--ink-muted)] block mb-2">
@@ -323,7 +323,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
   return (
     <main className="w-full min-h-screen bg-[#F9F8F6] text-[#141413] pb-24">
       {/* Top Console Bar */}
-      <div className="w-full bg-[#F2F0EC] border-b border-[var(--hairline)] px-5 sm:px-6 md:px-12 py-3 flex items-center justify-between">
+      <div className="w-full bg-[#F2F0EC] border-b border-[var(--hairline)] px-6 md:px-12 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#141413] font-medium">
@@ -348,7 +348,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 pt-8 md:pt-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 md:pt-12">
         {/* Editorial Dashboard Title */}
         <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 border-b border-[var(--hairline)] pb-6 mb-8">
           <div>
@@ -446,7 +446,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
         {/* --------------------------------------------------------- */}
         {activeTab === "orders" && (
           <section className="bg-white border border-[#141413]/10 rounded-sm shadow-sm overflow-hidden">
-            <div className="px-5 sm:px-6 py-4 border-b border-[var(--hairline)] flex items-center justify-between bg-[#FDFDFB]">
+            <div className="px-6 py-4 border-b border-[var(--hairline)] flex items-center justify-between bg-[#FDFDFB]">
               <div>
                 <h3 className="font-medium text-base text-[#141413]">Atelier Orders &amp; Dispatches</h3>
                 <p className="text-xs text-[var(--ink-muted)] font-mono mt-0.5">
@@ -564,7 +564,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
               {garments.map((garment) => (
                 <div
                   key={garment.id}
-                  className="bg-white border border-[#141413]/10 p-5 sm:p-6 rounded-sm shadow-sm flex flex-col justify-between"
+                  className="bg-white border border-[#141413]/10 p-6 rounded-sm shadow-sm flex flex-col justify-between"
                 >
                   <div>
                     {/* Header: Sprite + Title + Price */}
@@ -734,7 +734,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
             ) : (
               <div className="divide-y divide-[var(--hairline)]">
                 {messages.map((msg) => (
-                  <div key={msg.id} className="p-5 sm:p-6 hover:bg-[#FBFBFA] transition">
+                  <div key={msg.id} className="p-6 hover:bg-[#FBFBFA] transition">
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-2">
                       <div className="flex items-center gap-3">
                         <span className="font-sans font-semibold text-sm text-[#141413]">
@@ -784,7 +784,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
         {/* --------------------------------------------------------- */}
         {activeTab === "drop_list" && (
           <section className="bg-white border border-[#141413]/10 rounded-sm shadow-sm overflow-hidden">
-            <div className="px-5 sm:px-6 py-4 border-b border-[var(--hairline)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#FDFDFB]">
+            <div className="px-6 py-4 border-b border-[var(--hairline)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#FDFDFB]">
               <div>
                 <h3 className="font-medium text-base text-[#141413]">Private Drop Subscribers</h3>
                 <p className="text-xs text-[var(--ink-muted)] font-mono mt-0.5">

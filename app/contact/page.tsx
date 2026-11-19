@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <main className="w-full bg-[#F9F8F6] text-[#141413]">
       {/* Editorial Header */}
-      <section className="pt-20 md:pt-28 pb-12 md:pb-16 px-5 sm:px-6 md:px-10 lg:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
+      <section className="pt-20 md:pt-28 pb-12 md:pb-16 px-6 md:px-12 max-w-6xl mx-auto border-b border-[var(--hairline)]">
         <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-3">
           CONTACT &amp; CLIENT CONCIERGE
         </p>
@@ -26,7 +26,7 @@ export default function ContactPage() {
       </section>
 
       {/* Interactive Contact & Order Tracking Body */}
-      <section className="py-14 md:py-20 px-5 sm:px-6 md:px-10 lg:px-12 max-w-6xl mx-auto">
+      <section className="py-14 md:py-20 px-6 md:px-12 max-w-6xl mx-auto">
         <ContactClient />
       </section>
 

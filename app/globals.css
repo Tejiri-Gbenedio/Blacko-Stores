@@ -14,11 +14,17 @@
     box-sizing: border-box;
   }
 
+  html {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   body {
     margin: 0;
+    max-width: 100%;
+    overflow-x: clip;
     background: var(--bg-canvas);
     color: var(--ink-primary);
-    overflow-x: hidden;
     user-select: none;
     touch-action: pan-y;
   }

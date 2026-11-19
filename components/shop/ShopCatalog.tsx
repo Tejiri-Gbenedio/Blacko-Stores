@@ -155,7 +155,7 @@ export default function ShopCatalog({
   return (
     <div className="w-full relative min-h-screen bg-[#F9F8F6]">
       {/* 1. Page Header */}
-      <section className="pt-12 md:pt-16 pb-8 md:pb-12 px-5 sm:px-6 md:px-10 border-b border-[var(--hairline)]">
+      <section className="pt-12 md:pt-16 pb-8 md:pb-12 px-6 md:px-10 border-b border-[var(--hairline)]">
         <div className="max-w-6xl mx-auto">
           <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-2">
             SMALL-BATCH LAGOS SHIRTING • PACK DIRECTLY INTO YOUR WEEKENDER BAG
@@ -172,7 +172,7 @@ export default function ShopCatalog({
       </section>
 
       {/* 2. Loom & Co.-Inspired Sticky Filter & Sort Sub-Bar */}
-      <div className="sticky top-16 md:top-18 z-30 bg-[#F9F8F6]/95 backdrop-blur-md border-b border-[var(--hairline)] px-5 sm:px-6 md:px-10 transition-shadow overflow-x-clip">
+      <div className="sticky top-16 md:top-18 z-30 bg-[#F9F8F6]/95 backdrop-blur-md border-b border-[var(--hairline)] px-6 md:px-10 transition-shadow overflow-x-clip">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 py-3.5">
           {/* Category Filter Tabs */}
           <div className="w-full min-w-0 overflow-x-auto no-scrollbar flex items-center gap-6 sm:gap-8 pb-1 md:pb-0">
@@ -245,7 +245,7 @@ export default function ShopCatalog({
       </div>
 
       {/* 3. Studio Product Grid */}
-      <main className="max-w-6xl mx-auto px-5 sm:px-6 md:px-10 pt-10 pb-36">
+      <main className="max-w-6xl mx-auto px-6 md:px-10 pt-10 pb-36">
         {filteredGarments.length === 0 ? (
           /* Empty State */
           <div className="py-24 text-center max-w-md mx-auto">

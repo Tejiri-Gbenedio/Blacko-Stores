@@ -61,7 +61,7 @@ export default function StoreFooter() {
   return (
     <footer
       id="footer"
-      className="w-full bg-[#F7F5F0] border-t border-[var(--hairline)] pt-16 pb-12 px-5 sm:px-6 md:px-10 lg:px-12 text-[#141413]"
+      className="w-full bg-[#F7F5F0] border-t border-[var(--hairline)] pt-16 pb-12 px-6 md:px-12 text-[#141413]"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 pb-14 border-b border-[var(--hairline)]">
         {/* Column 1: Brand & Manifesto */}

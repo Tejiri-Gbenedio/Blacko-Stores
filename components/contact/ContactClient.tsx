@@ -164,7 +164,7 @@ export default function ContactClient() {
         </div>
 
         {/* Live Order Tracker */}
-        <div className="p-5 sm:p-6 bg-white border border-[var(--hairline)] rounded-sm">
+        <div className="p-6 bg-white border border-[var(--hairline)] rounded-sm">
           <div className="flex items-center justify-between mb-3">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#141413] font-medium">
               LIVE ORDER TRACKING
@@ -252,7 +252,7 @@ export default function ContactClient() {
       </div>
 
       {/* RIGHT COLUMN: Studio Inquiry Form */}
-      <div className="lg:col-span-7 bg-[#F7F5F0] p-5 sm:p-8 md:p-10 border border-[var(--hairline)] rounded-sm">
+      <div className="lg:col-span-7 bg-[#F7F5F0] p-6 sm:p-8 md:p-10 border border-[var(--hairline)] rounded-sm">
         <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-2">
           INQUIRIES &amp; CUSTOM ORDERS
         </p>

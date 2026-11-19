@@ -586,7 +586,7 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
           ref={hudRef}
           className={
             (mode === "INSPECT" ? "pointer-events-none " : "") +
-            "fixed bottom-12 md:bottom-14 left-5 sm:left-6 md:left-8 z-40 flex flex-col gap-3.5 max-w-md pr-4"
+            "fixed bottom-12 md:bottom-14 left-6 md:left-8 z-40 flex flex-col gap-3.5 max-w-md pr-4"
           }
         >
           <div>

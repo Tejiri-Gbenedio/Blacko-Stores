@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import type { PackedBagItemDTO } from "@/lib/types";
 
 interface CustomBagDockProps {
@@ -15,15 +15,25 @@ export default function CustomBagDock({
   onOpenDrawer,
 }: CustomBagDockProps) {
   const visibleStack = items.slice(-4);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 350);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div
       ref={dockRef}
       onClick={onOpenDrawer}
-      className="bag-dock"
+      className={`bag-dock ${isScrolled ? "is-scrolled" : ""}`}
       title="Open your Blacko Stores Weekender Bag"
     >
-      <div className="absolute -top-6 right-3 bg-[#141413] text-[#F9F8F6] px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-[0.15em] shadow">
+      <div className="bag-dock-badge absolute -top-6 right-3 bg-[#141413] text-[#F9F8F6] px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-[0.15em] shadow whitespace-nowrap">
         Blacko Bag • {items.length} packed
       </div>
 

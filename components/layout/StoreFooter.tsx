@@ -7,12 +7,55 @@ import { useBag } from "@/components/bag/BagContext";
 export default function StoreFooter() {
   const { setDrawerOpen } = useBag();
   const [vipEmail, setVipEmail] = useState("");
-  const [vipSubmitted, setVipSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<{
+    type: "success" | "already" | "error";
+    message: string;
+  } | null>(null);
 
-  function handleVipSubmit(e: React.FormEvent) {
+  async function handleVipSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!vipEmail || !vipEmail.includes("@")) return;
-    setVipSubmitted(true);
+    const email = vipEmail.trim();
+    if (!email || !email.includes("@")) return;
+
+    setSubmitting(true);
+    setFeedback(null);
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.ok) {
+        if (data.status === "already_subscribed") {
+          setFeedback({
+            type: "already",
+            message: "You are already on our private drop list. We have your email noted.",
+          });
+        } else {
+          setFeedback({
+            type: "success",
+            message: "✓ You're on the private drop list. Check your inbox.",
+          });
+        }
+        setVipEmail("");
+      } else {
+        setFeedback({
+          type: "error",
+          message: data.error || "Unable to join at this time. Please try again.",
+        });
+      }
+    } catch {
+      setFeedback({
+        type: "error",
+        message: "Network error. Please try again.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -96,9 +139,25 @@ export default function StoreFooter() {
             Receive private reservation links 1 hour before small-batch seasonal releases open publicly.
           </p>
 
-          {vipSubmitted ? (
-            <div className="p-3 bg-[#141413] text-[#F9F8F6] text-xs font-mono tracking-wider rounded-sm">
-              ✓ You&apos;re on the private drop list. Check your inbox.
+          {feedback ? (
+            <div
+              className={
+                "p-3 text-xs font-mono tracking-wider rounded-sm " +
+                (feedback.type === "error"
+                  ? "bg-red-50 text-red-900 border border-red-200"
+                  : "bg-[#141413] text-[#F9F8F6]")
+              }
+            >
+              <div className="flex items-start justify-between gap-2">
+                <span>{feedback.message}</span>
+                <button
+                  type="button"
+                  onClick={() => setFeedback(null)}
+                  className="opacity-70 hover:opacity-100 text-[10px] uppercase font-sans"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
           ) : (
             <form
@@ -108,16 +167,21 @@ export default function StoreFooter() {
               <input
                 type="email"
                 value={vipEmail}
-                onChange={(e) => setVipEmail(e.target.value)}
+                onChange={(e) => {
+                  setVipEmail(e.target.value);
+                  if (feedback) setFeedback(null);
+                }}
+                disabled={submitting}
                 placeholder="Enter your email"
                 required
-                className="flex-1 px-3 py-2 text-xs bg-transparent text-[#141413] placeholder:text-[var(--ink-muted)] focus:outline-none"
+                className="flex-1 px-3 py-2 text-xs bg-transparent text-[#141413] placeholder:text-[var(--ink-muted)] focus:outline-none disabled:opacity-50"
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.16em] font-medium hover:bg-[#2B2B28] transition rounded-sm"
+                disabled={submitting}
+                className="px-4 py-2 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.16em] font-medium hover:bg-[#2B2B28] disabled:opacity-50 transition rounded-sm flex items-center gap-1.5"
               >
-                Join →
+                {submitting ? "Joining..." : "Join →"}
               </button>
             </form>
           )}
@@ -130,7 +194,7 @@ export default function StoreFooter() {
 
       <div className="max-w-6xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-[var(--ink-muted)]">
         <span>Lagos • Abuja • Port Harcourt • Worldwide Express</span>
-        <span className="mt-2 sm:mt-0">Powered by Paystack &amp; Neon Postgres</span>
+        <span className="mt-2 sm:mt-0">Lagos Atelier • Small-Batch Shirting</span>
       </div>
     </footer>
   );

@@ -308,6 +308,8 @@ export default function ShopCatalog({
                       }}
                       src={garment.frontImgUrl}
                       alt={garment.title}
+                      loading="lazy"
+                      decoding="async"
                       onClick={() => setInspectGarment(garment)}
                       className="w-full h-full object-contain p-4 transition-all duration-500 ease-out group-hover/card:opacity-0 group-hover/card:scale-105 cursor-pointer"
                     />
@@ -317,6 +319,8 @@ export default function ShopCatalog({
                       src={garment.backImgUrl}
                       alt={`${garment.title} back view`}
                       aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
                       onClick={() => setInspectGarment(garment)}
                       className="absolute inset-0 w-full h-full object-contain p-4 opacity-0 transition-all duration-500 ease-out group-hover/card:opacity-100 group-hover/card:scale-105 cursor-pointer"
                     />

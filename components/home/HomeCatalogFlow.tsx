@@ -89,7 +89,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
         {/* Clean Editorial Manifesto */}
         <div className="py-20 md:py-28 px-6 text-center max-w-4xl mx-auto">
           <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-[var(--ink-muted)] mb-5">
-            STUDIO MANIFESTO • LOT 24
+            STUDIO MANIFESTO • DROP 01
           </p>
           <h2 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-[#141413] leading-[1.12]">
             &ldquo;Cut for Lagos heat. Packed for everywhere else.&rdquo;
@@ -153,6 +153,8 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                     }}
                     src={garment.frontImgUrl}
                     alt={garment.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain p-4 transition-all duration-500 ease-out group-hover/card:opacity-0 group-hover/card:scale-105"
                   />
 
@@ -161,6 +163,8 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                     src={garment.backImgUrl}
                     alt={`${garment.title} back view`}
                     aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-contain p-4 opacity-0 transition-all duration-500 ease-out group-hover/card:opacity-100 group-hover/card:scale-105"
                   />
                 </div>
@@ -254,6 +258,8 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                       ref={comboImg1Ref}
                       src={comboShirt1.frontImgUrl}
                       alt={comboShirt1.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-contain p-4"
                     />
                   </div>
@@ -299,6 +305,8 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                       ref={comboImg2Ref}
                       src={comboShirt2.frontImgUrl}
                       alt={comboShirt2.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-contain p-4"
                     />
                   </div>

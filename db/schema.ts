@@ -68,3 +68,9 @@ export const contactMessages = pgTable("contact_messages", {
   message: text("message").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const dropSubscribers = pgTable("drop_subscribers", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  email: text("email").notNull().unique(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});

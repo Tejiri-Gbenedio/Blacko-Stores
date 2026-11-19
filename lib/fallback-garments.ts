@@ -7,7 +7,7 @@ export const FALLBACK_GARMENTS: GarmentDTO[] = [
     lotLabel: "DROP 01 — SIGNATURE PIECE",
     title: "Sky Floral Camp Shirt",
     description:
-      "Relaxed boxy camp-collar shirting cut for Lagos heat in raised cotton-linen floral matelasse jacquard with tonal buttons.",
+      "Relaxed boxy camp-collar shirting cut for Lagos heat in raised 100% cotton floral matelassé jacquard with tonal buttons.",
     priceKobo: 6500000, // ₦65,000
     fabric: "100% Raised Cotton Jacquard",
     weightGsm: "215 GSM",

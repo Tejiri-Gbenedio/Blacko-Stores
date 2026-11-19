@@ -536,7 +536,7 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
         <div ref={railRef} className="steel-rail" />
 
         {/* Diagonal Rack Stage */}
-        <main className="relative w-full h-full">
+        <div className="relative w-full h-full">
           {garments.map((shirt, idx) => (
             <div
               key={shirt.id}
@@ -570,11 +570,15 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
                 src={shirt.frontImgUrl}
                 alt={shirt.title}
                 className="shirt-sprite"
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding={idx === 0 ? "sync" : "async"}
+                // @ts-ignore
+                fetchPriority={idx === 0 ? "high" : "low"}
                 onLoad={idx === 0 ? syncRailToHooks : undefined}
               />
             </div>
           ))}
-        </main>
+        </div>
 
         {/* Browse Mode HUD */}
         <div

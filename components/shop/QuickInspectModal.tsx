@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { formatNaira } from "@/lib/currency";
 import type { GarmentDTO, GarmentVariantDTO } from "@/lib/types";
@@ -15,6 +16,7 @@ export default function QuickInspectModal({
   garment,
   onClose,
 }: QuickInspectModalProps) {
+  const router = useRouter();
   const { addToBag } = useBag();
   const [hangerSide, setHangerSide] = useState<"FRONT" | "BACK">("FRONT");
   const [selectedVariant, setSelectedVariant] = useState<GarmentVariantDTO | null>(null);
@@ -255,6 +257,18 @@ export default function QuickInspectModal({
             >
               <span>Fold &amp; Put in Custom Bag</span>
               <span className="font-mono text-sm">↘</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                router.push(`/fitting-room?shirt=${encodeURIComponent(garment.slug)}`);
+              }}
+              className="mt-2.5 w-full py-2.5 border border-[#141413]/25 text-[#141413] text-xs uppercase tracking-[0.18em] font-medium hover:border-[#141413] hover:bg-[#141413]/5 transition flex items-center justify-center gap-2 rounded-sm text-center"
+            >
+              <span>Try on Model</span>
+              <span className="font-mono text-xs">→</span>
             </button>
           </div>
         </div>

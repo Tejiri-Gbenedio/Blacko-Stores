@@ -29,6 +29,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Shop", href: "/shop" },
+    { label: "Try On", href: "/fitting-room" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

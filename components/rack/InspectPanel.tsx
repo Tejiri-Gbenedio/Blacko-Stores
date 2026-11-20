@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { formatNaira } from "@/lib/currency";
 import type { GarmentDTO, GarmentVariantDTO } from "@/lib/types";
 
@@ -136,6 +137,14 @@ export default function InspectPanel({
           <span>Fold &amp; Put in Custom Bag</span>
           <span>↘</span>
         </button>
+
+        <Link
+          href={`/fitting-room?shirt=${encodeURIComponent(garment.slug)}`}
+          className="mt-2.5 w-full py-2.5 border border-[#141413]/25 text-[#141413] text-xs uppercase tracking-[0.18em] font-medium hover:border-[#141413] hover:bg-[#141413]/5 transition flex items-center justify-center gap-2 rounded-xs text-center"
+        >
+          <span>Try on Model</span>
+          <span className="font-mono text-xs">→</span>
+        </Link>
       </div>
     </aside>
   );

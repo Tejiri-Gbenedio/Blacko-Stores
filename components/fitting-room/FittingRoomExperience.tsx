@@ -202,10 +202,9 @@ export default function FittingRoomExperience({
           {/* ========================================================= */}
           <div className="lg:col-span-7 flex flex-col gap-4">
             {/* The Visual Studio Frame */}
-            <div className="w-full relative aspect-[3/4] max-h-[78vh] lg:max-h-[82vh] bg-[#F4F3F0] border border-[#141413]/12 rounded-sm overflow-hidden flex items-center justify-center shadow-sm">
-              {/* Floating Top Controls Bar inside Stage */}
-              <div className="absolute top-4 inset-x-4 z-20 flex items-center justify-between pointer-events-auto">
-                {/* 1. Model Switcher Pill */}
+            <div className="w-full max-w-[540px] mx-auto relative aspect-[3/4] bg-[#F4F3F0] border border-[#141413]/12 rounded-sm overflow-hidden shadow-sm">
+              {/* Floating Top-Left Model Switcher Pill */}
+              <div className="absolute top-4 left-4 z-20 pointer-events-auto">
                 <div className="inline-flex items-center bg-white/90 backdrop-blur-md border border-[#141413]/15 p-1 rounded-sm shadow-sm">
                   <button
                     onClick={() => handleSelectModel("kenji")}
@@ -230,8 +229,10 @@ export default function FittingRoomExperience({
                     Ren
                   </button>
                 </div>
+              </div>
 
-                {/* 2. Angle Switcher Pill */}
+              {/* Floating Top-Right Angle Switcher Pill */}
+              <div className="absolute top-4 right-4 z-20 pointer-events-auto">
                 <div className="inline-flex items-center bg-white/90 backdrop-blur-md border border-[#141413]/15 p-1 rounded-sm shadow-sm">
                   <button
                     onClick={() => setAngle("front")}
@@ -261,34 +262,26 @@ export default function FittingRoomExperience({
                 </div>
               </div>
 
-              {/* Model Image with Smooth Crossfade */}
-              <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4">
-                <img
-                  ref={modelImgRef}
-                  src={displayedSrc}
-                  alt={`${MODELS[model].name} modeling ${activeGarment ? activeGarment.title : "Base Look"} (${angle} view)`}
-                  className={
-                    "w-full h-full object-contain transition-opacity duration-200 ease-out " +
-                    (isCrossfading ? "opacity-40 scale-[0.99]" : "opacity-100 scale-100")
-                  }
-                />
-              </div>
-
-              {/* Floating Bottom Model Fit Readout */}
-              <div className="absolute bottom-4 inset-x-4 z-20 flex justify-center pointer-events-none">
-                <div className="px-4 py-2 bg-white/90 backdrop-blur-md border border-[#141413]/15 text-center shadow-sm rounded-sm">
-                  <p className="font-mono text-[11px] text-[#141413]">
-                    {MODELS[model].fitNote}
-                  </p>
-                </div>
-              </div>
+              {/* Full-Bleed 3:4 Studio Model Photo with Smooth Crossfade */}
+              <img
+                ref={modelImgRef}
+                src={displayedSrc}
+                alt={`${MODELS[model].name} modeling ${activeGarment ? activeGarment.title : "Base Look"} (${angle} view)`}
+                className={
+                  "w-full h-full object-cover object-center transition-opacity duration-200 ease-out " +
+                  (isCrossfading ? "opacity-40 scale-[0.99]" : "opacity-100 scale-100")
+                }
+              />
             </div>
 
-            {/* Studio Model Specs Sub-Strip */}
-            <div className="flex items-center justify-between text-[11px] font-mono text-[var(--ink-muted)] px-1">
-              <span>Model Height: {MODELS[model].height}</span>
-              <span>Styled In: {MODELS[model].size}</span>
-              <span className="hidden sm:inline">Lagos Daylight Studio</span>
+            {/* Studio Model Fit Readout Strip (Clean hairline border below frame) */}
+            <div className="w-full max-w-[540px] mx-auto border border-[var(--hairline)] bg-[#F4F3F0]/80 px-4 py-2.5 rounded-sm flex items-center justify-between text-xs font-mono text-[#141413]">
+              <span className="text-[11px] sm:text-xs text-[#141413]">
+                {MODELS[model].fitNote}
+              </span>
+              <span className="text-[10px] uppercase tracking-wider text-[var(--ink-muted)] hidden sm:inline ml-3 flex-shrink-0">
+                Lagos Daylight Studio
+              </span>
             </div>
           </div>
 

@@ -233,7 +233,7 @@ export default function QuickInspectModal({
                       disabled={isOos}
                       onClick={() => setSelectedVariant(v)}
                       className={
-                        "py-2.5 border text-xs font-mono uppercase transition rounded-sm " +
+                        "min-h-11 py-2.5 border text-xs font-mono uppercase transition rounded-sm " +
                         (isSelected
                           ? "border-[#141413] bg-[#141413] text-white shadow-sm"
                           : "border-[#141413]/20 bg-white hover:border-[#141413]") +

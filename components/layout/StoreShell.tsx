@@ -37,9 +37,9 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
   return (
     <div className="min-h-screen w-full relative flex flex-col">
       {/* Sticky Global Navigation Bar */}
-      <header className="sticky top-0 left-0 right-0 z-[90] flex items-center justify-between px-6 md:px-10 h-16 md:h-18 bg-[#F9F8F6]/85 backdrop-blur-md border-b border-[var(--hairline)] transition-colors">
+      <header className="sticky top-0 left-0 right-0 z-[90] grid grid-cols-[1fr_auto_1fr] items-center gap-2 px-3 sm:px-6 md:px-10 h-16 xl:h-18 xl:flex xl:justify-between bg-[#F9F8F6]/85 backdrop-blur-md border-b border-[var(--hairline)] transition-colors">
         {/* Left: Nav Links */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-7">
           {navLinks.map((link) => {
             const isActive =
               link.href === "/"
@@ -66,39 +66,40 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
         </nav>
 
         {/* Mobile Hamburger Button */}
-        <div className="md:hidden flex items-center">
+        <div className="xl:hidden flex items-center">
           <button
             onClick={() => {
               const nextState = !mobileMenuOpen;
               setMobileMenuOpen(nextState);
               if (nextState) setDrawerOpen(false);
             }}
-            className="p-1.5 text-xs uppercase tracking-widest font-mono text-[#141413]"
+            className="min-h-11 px-1.5 text-[11px] uppercase tracking-wider font-mono text-[#141413]"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? "✕ Close" : "☰ Menu"}
           </button>
         </div>
 
         {/* Center: Brand Wordmark */}
-        <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
+        <div className="flex items-center xl:absolute xl:left-1/2 xl:-translate-x-1/2">
           <Link
             href="/"
-            className="text-sm md:text-base font-semibold tracking-[0.28em] uppercase text-[#141413] hover:opacity-75 transition select-none"
+            className="whitespace-nowrap text-[11px] sm:text-sm lg:text-base font-semibold tracking-[0.17em] sm:tracking-[0.28em] uppercase text-[#141413] hover:opacity-75 transition select-none"
           >
             BLACKO STORES
           </Link>
         </div>
 
         {/* Right: Custom Bag Pill */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-self-end">
           <button
             ref={mobileBagBtnRef}
             onClick={() => {
               setDrawerOpen(!drawerOpen);
               setMobileMenuOpen(false);
             }}
-            className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#141413]/25 hover:border-[#141413] hover:bg-[#141413]/5 transition text-xs tracking-[0.14em] uppercase font-medium"
+            className="flex min-h-11 items-center gap-1.5 px-2 sm:gap-2.5 sm:px-3.5 rounded-full border border-[#141413]/25 hover:border-[#141413] hover:bg-[#141413]/5 transition text-xs tracking-[0.14em] uppercase font-medium"
           >
             <span className="hidden sm:inline">Custom Bag</span>
             <span className="sm:hidden">Bag</span>
@@ -115,12 +116,12 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
           <div
             id="mobile-menu-backdrop"
             onClick={() => setMobileMenuOpen(false)}
-            className="md:hidden fixed inset-0 top-[64px] z-[95] bg-black/25 backdrop-blur-[2px]"
+            className="xl:hidden fixed inset-0 top-[64px] z-[95] bg-black/25 backdrop-blur-[2px]"
             aria-hidden="true"
           />
           <div
             id="mobile-menu-overlay"
-            className="md:hidden fixed inset-x-0 top-[64px] z-[100] bg-[#F9F8F6] border-b border-[var(--hairline)] px-6 py-6 flex flex-col gap-4 shadow-xl"
+            className="xl:hidden fixed inset-x-0 top-[64px] z-[100] bg-[#F9F8F6] border-b border-[var(--hairline)] px-6 py-6 flex flex-col gap-4 shadow-xl"
           >
             {navLinks.map((link) => (
               <Link

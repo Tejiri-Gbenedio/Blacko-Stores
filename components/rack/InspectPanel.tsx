@@ -115,7 +115,7 @@ export default function InspectPanel({
                   disabled={soldOut}
                   onClick={() => onSelectVariant(variant)}
                   className={
-                    "py-2 border text-xs font-mono transition " +
+                    "min-h-11 py-2 border text-xs font-mono transition " +
                     (active
                       ? "border-[#141413] bg-[#141413] text-white"
                       : "border-[#141413]/20 hover:border-[#141413]") +

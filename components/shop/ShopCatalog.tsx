@@ -112,13 +112,7 @@ export default function ShopCatalog({
           if (!match) return false;
         } else if (category === "adire-batik" || category === "adire" || category === "batik") {
           const match =
-            g.fabric.toLowerCase().includes("batik") ||
-            g.fabric.toLowerCase().includes("adire") ||
-            g.title.toLowerCase().includes("batik") ||
-            g.title.toLowerCase().includes("geometric") ||
-            g.description.toLowerCase().includes("batik") ||
-            g.lotLabel.toLowerCase().includes("dye") ||
-            g.lotLabel.toLowerCase().includes("artisanal");
+            /(?:adire|batik)/i.test(g.fabric);
           if (!match) return false;
         }
 
@@ -172,8 +166,8 @@ export default function ShopCatalog({
       </section>
 
       {/* 2. Loom & Co.-Inspired Sticky Filter & Sort Sub-Bar */}
-      <div className="sticky top-16 md:top-18 z-30 bg-[#F9F8F6]/95 backdrop-blur-md border-b border-[var(--hairline)] px-6 md:px-10 transition-shadow overflow-x-clip">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 py-3.5">
+      <div className="sticky top-16 xl:top-18 z-30 bg-[#F9F8F6]/95 backdrop-blur-md border-b border-[var(--hairline)] px-6 md:px-10 transition-shadow overflow-x-clip">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 py-3.5">
           {/* Category Filter Tabs */}
           <div className="w-full min-w-0 overflow-x-auto no-scrollbar flex items-center gap-6 sm:gap-8 pb-1 md:pb-0">
             {CATEGORIES.map((cat) => {
@@ -183,7 +177,7 @@ export default function ShopCatalog({
                   key={cat.id}
                   onClick={() => updateParams({ category: cat.id })}
                   className={
-                    "text-xs uppercase tracking-[0.2em] font-medium py-1 whitespace-nowrap transition relative flex-shrink-0 " +
+                    "text-xs uppercase tracking-[0.2em] font-medium flex min-h-11 items-center whitespace-nowrap transition relative flex-shrink-0 " +
                     (isSelected
                       ? "text-[#141413]"
                       : "text-[var(--ink-muted)] hover:text-[#141413]")
@@ -199,9 +193,9 @@ export default function ShopCatalog({
           </div>
 
           {/* Right Controls: Size Pills & Price Sort */}
-          <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-5 flex-wrap sm:flex-nowrap">
+          <div className="flex items-center justify-between md:justify-end gap-2 sm:gap-5 flex-wrap lg:flex-nowrap lg:shrink-0">
             {/* Size Filter Pills */}
-            <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
+            <div className="flex items-center gap-1 sm:gap-1.5 whitespace-nowrap">
               <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--ink-muted)] hidden lg:inline mr-1">
                 Size:
               </span>
@@ -212,7 +206,7 @@ export default function ShopCatalog({
                     key={sz}
                     onClick={() => updateParams({ size: sz })}
                     className={
-                      "px-2 sm:px-2.5 py-1 text-[11px] font-mono uppercase rounded transition " +
+                      "min-h-11 min-w-10 px-1.5 sm:px-2.5 text-[11px] font-mono uppercase rounded transition " +
                       (isSelected
                         ? "bg-[#141413] text-[#F9F8F6] font-medium shadow-sm"
                         : "bg-white text-[#141413] border border-[#141413]/15 hover:border-[#141413]")
@@ -233,7 +227,7 @@ export default function ShopCatalog({
                 id="shop-sort"
                 value={sort}
                 onChange={(e) => updateParams({ sort: e.target.value })}
-                className="bg-white border border-[#141413]/20 text-[#141413] text-[11px] font-mono uppercase px-2.5 sm:px-3 py-1.5 rounded-sm focus:outline-none focus:border-[#141413] cursor-pointer"
+                className="bg-white border border-[#141413]/20 text-[#141413] text-[11px] font-mono uppercase min-h-11 px-2.5 sm:px-3 rounded-sm focus:outline-none focus:border-[#141413] cursor-pointer"
               >
                 <option value="featured">Featured</option>
                 <option value="price-asc">Price: Low → High</option>
@@ -293,14 +287,6 @@ export default function ShopCatalog({
                       )}
                     </div>
 
-                    {/* Quick Inspect Hover Button */}
-                    <button
-                      onClick={() => setInspectGarment(garment)}
-                      className="absolute bottom-3 left-3 right-3 z-20 py-2 bg-white/90 backdrop-blur-sm text-[#141413] text-[10px] font-mono uppercase tracking-[0.18em] border border-[#141413]/15 opacity-0 group-hover/card:opacity-100 transition-opacity shadow-sm hover:bg-[#141413] hover:text-[#F9F8F6]"
-                    >
-                      Quick Inspect
-                    </button>
-
                     {/* Primary Front Sprite */}
                     <img
                       ref={(el) => {
@@ -329,23 +315,29 @@ export default function ShopCatalog({
                   {/* Card Info & Inline Actions */}
                   <div className="pt-3.5 pb-2 flex-1 flex flex-col justify-between">
                     <div>
-                      <h4
-                        onClick={() => setInspectGarment(garment)}
-                        className="font-sans font-medium text-sm md:text-base text-[#141413] line-clamp-1 hover:opacity-75 transition cursor-pointer"
-                      >
+                      <h2 className="text-sm md:text-base font-medium leading-snug text-[#141413]">
                         {garment.title}
-                      </h4>
+                      </h2>
                       <p className="font-mono text-xs md:text-sm text-[#141413]/85 mt-1">
                         {formatNaira(garment.priceKobo)}
                       </p>
-                      <p className="text-[11px] text-[var(--ink-muted)] line-clamp-1 mt-0.5">
-                        {garment.fabric} • {garment.fit}
+                      <p className="text-xs leading-relaxed text-[var(--ink-muted)] mt-1">
+                        {garment.fabric}
+                        <span className="block">{garment.fit}</span>
                       </p>
                     </div>
 
                     {/* Size Selector Pills */}
-                    <div className="mt-3.5">
-                      <div className="flex items-center gap-1.5 flex-wrap">
+                    <div className="mt-2">
+                      <button
+                        type="button"
+                        onClick={() => setInspectGarment(garment)}
+                        className="mb-2 min-h-11 w-full border border-[#141413]/20 text-xs font-medium hover:border-[#141413] hover:bg-[#141413]/5 transition rounded-sm"
+                        aria-label={`View details for ${garment.title}`}
+                      >
+                        View details
+                      </button>
+                      <div className="grid grid-cols-4 gap-1">
                         {garment.variants.map((v) => {
                           const isSelected = v.id === currentVarId;
                           const isOos = v.stockQty <= 0;
@@ -355,7 +347,7 @@ export default function ShopCatalog({
                               disabled={isOos}
                               onClick={() => handleSelectVariant(garment.id, v.id)}
                               className={
-                                "px-2.5 py-1 text-[11px] font-mono uppercase rounded transition " +
+                                "min-h-11 px-0.5 text-[11px] font-mono uppercase rounded transition " +
                                 (isOos
                                   ? "opacity-30 cursor-not-allowed line-through bg-transparent border border-[#141413]/10"
                                   : isSelected
@@ -372,7 +364,7 @@ export default function ShopCatalog({
                       {/* Pack in Bag Action Button */}
                       <button
                         onClick={() => handlePackCard(garment)}
-                        className="w-full mt-3 py-2.5 px-4 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.16em] font-medium hover:bg-[#2B2B28] active:scale-[0.98] transition flex items-center justify-between group/btn shadow-sm rounded-sm"
+                        className="w-full mt-2 min-h-11 py-2 px-2.5 sm:px-4 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.16em] font-medium hover:bg-[#2B2B28] active:scale-[0.98] transition flex items-center justify-between group/btn shadow-sm rounded-sm"
                       >
                         <span>Pack in Bag</span>
                         <span className="font-mono text-xs group-hover/btn:translate-x-0.5 group-hover/btn:translate-y-0.5 transition-transform">

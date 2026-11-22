@@ -60,7 +60,7 @@ export default function FittingRoomExperience({
   const defaultSlug =
     initialShirtSlug && garments.some((g) => g.slug === initialShirtSlug)
       ? initialShirtSlug
-      : garments[0]?.slug || null;
+      : null;
   const [shirtSlug, setShirtSlug] = useState<string | null>(defaultSlug);
 
   // Selected Angle: Front vs Back
@@ -196,7 +196,7 @@ export default function FittingRoomExperience({
 
       {/* Main Studio Fitting Room Grid */}
       <main className="w-full flex-1 max-w-7xl mx-auto px-6 md:px-12 py-8 lg:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-14 items-start">
           {/* ========================================================= */}
           {/* LEFT COLUMN (55%): THE STUDIO MODEL STAGE                 */}
           {/* ========================================================= */}
@@ -204,12 +204,13 @@ export default function FittingRoomExperience({
             {/* The Visual Studio Frame */}
             <div className="w-full max-w-[540px] mx-auto relative aspect-[3/4] bg-[#F4F3F0] border border-[#141413]/12 rounded-sm overflow-hidden shadow-sm">
               {/* Floating Top-Left Model Switcher Pill */}
-              <div className="absolute top-4 left-4 z-20 pointer-events-auto">
+              <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-20 pointer-events-auto">
                 <div className="inline-flex items-center bg-white/90 backdrop-blur-md border border-[#141413]/15 p-1 rounded-sm shadow-sm">
                   <button
                     onClick={() => handleSelectModel("kenji")}
+                    aria-pressed={model === "kenji"}
                     className={
-                      "px-3 py-1.5 text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
+                      "min-h-11 min-w-11 px-2 sm:px-3 lg:min-h-0 lg:min-w-0 lg:py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
                       (model === "kenji"
                         ? "bg-[#141413] text-[#F9F8F6] font-medium shadow-sm"
                         : "text-[#141413]/70 hover:text-[#141413]")
@@ -219,8 +220,9 @@ export default function FittingRoomExperience({
                   </button>
                   <button
                     onClick={() => handleSelectModel("ren")}
+                    aria-pressed={model === "ren"}
                     className={
-                      "px-3 py-1.5 text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
+                      "min-h-11 min-w-11 px-2 sm:px-3 lg:min-h-0 lg:min-w-0 lg:py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
                       (model === "ren"
                         ? "bg-[#141413] text-[#F9F8F6] font-medium shadow-sm"
                         : "text-[#141413]/70 hover:text-[#141413]")
@@ -232,12 +234,13 @@ export default function FittingRoomExperience({
               </div>
 
               {/* Floating Top-Right Angle Switcher Pill */}
-              <div className="absolute top-4 right-4 z-20 pointer-events-auto">
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 pointer-events-auto">
                 <div className="inline-flex items-center bg-white/90 backdrop-blur-md border border-[#141413]/15 p-1 rounded-sm shadow-sm">
                   <button
                     onClick={() => setAngle("front")}
+                    aria-pressed={angle === "front"}
                     className={
-                      "px-3 py-1.5 text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
+                      "min-h-11 min-w-11 px-2 sm:px-3 lg:min-h-0 lg:min-w-0 lg:py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
                       (angle === "front"
                         ? "bg-[#141413] text-[#F9F8F6] font-medium shadow-sm"
                         : "text-[#141413]/70 hover:text-[#141413]")
@@ -247,9 +250,10 @@ export default function FittingRoomExperience({
                   </button>
                   <button
                     onClick={() => setAngle("back")}
+                    aria-pressed={angle === "back"}
                     disabled={shirtSlug === null}
                     className={
-                      "px-3 py-1.5 text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
+                      "min-h-11 min-w-11 px-2 sm:px-3 lg:min-h-0 lg:min-w-0 lg:py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-[0.16em] transition rounded-xs " +
                       (shirtSlug === null
                         ? "opacity-30 cursor-not-allowed text-[#141413]/40"
                         : angle === "back"
@@ -288,26 +292,14 @@ export default function FittingRoomExperience({
           {/* ========================================================= */}
           {/* RIGHT COLUMN (45%): SHIRT SELECTOR & PACKING CONTROLS     */}
           {/* ========================================================= */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:max-w-[400px] pb-36">
+          <div className="lg:col-span-5 flex flex-col gap-5 lg:max-w-[400px] pb-36">
             <div>
               {/* Header */}
-              <div className="border-b border-[var(--hairline)] pb-5">
-                <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-2">
-                  ATELIER FITTING ROOM • VIRTUAL TRY-ON
-                </p>
-                <h1 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[#141413]">
-                  Lagos Studio Silhouettes
-                </h1>
-                <p className="text-xs md:text-sm text-[var(--ink-muted)] mt-2 leading-relaxed">
-                  Explore proportional drape, texture contrast, and collar structure on studio models Kenji and Ren before packing into your Weekender.
-                </p>
-              </div>
-
               {/* 2×2 Garment Thumbnails Grid */}
-              <div className="mt-6">
+              <div className="lg:mt-1">
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#141413] font-medium">
-                    Select Silhouette ({garments.length})
+                    Choose a shirt
                   </span>
                   <button
                     onClick={() => handleSelectShirt(null)}
@@ -330,6 +322,7 @@ export default function FittingRoomExperience({
                         key={g.id}
                         type="button"
                         onClick={() => handleSelectShirt(g.slug)}
+                        aria-pressed={isSelected}
                         className={
                           "p-3 rounded-sm text-left transition flex items-center gap-3 border " +
                           (isSelected
@@ -345,7 +338,7 @@ export default function FittingRoomExperience({
                           />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="font-sans text-xs font-medium text-[#141413] truncate">
+                          <h3 className="font-sans text-xs font-medium text-[#141413] leading-tight lg:truncate">
                             {g.title}
                           </h3>
                           <p className="font-mono text-[11px] text-[#141413]/80 mt-0.5">
@@ -457,6 +450,18 @@ export default function FittingRoomExperience({
             </div>
 
             {/* Call To Action Button */}
+              <div className="order-last lg:order-first border-t lg:border-t-0 lg:border-b border-[var(--hairline)] pt-5 lg:pt-0 lg:pb-5">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--ink-muted)] mb-2">
+                  ATELIER FITTING ROOM • VIRTUAL TRY-ON
+                </p>
+                <h1 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[#141413]">
+                  Lagos Studio Silhouettes
+                </h1>
+                <p className="text-xs md:text-sm text-[var(--ink-muted)] mt-2 leading-relaxed">
+                  Explore proportional drape, texture contrast, and collar structure on studio models Kenji and Ren before packing into your Weekender.
+                </p>
+              </div>
+
             <div className="pt-4">
               <button
                 type="button"

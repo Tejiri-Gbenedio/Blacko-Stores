@@ -46,10 +46,11 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
   useEffect(() => {
     if (typeof document === "undefined") return;
     if (mode === "INSPECT") {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
+      const root = document.documentElement;
+      const prev = root.style.overflowY;
+      root.style.overflowY = "hidden";
       return () => {
-        document.body.style.overflow = prev;
+        root.style.overflowY = prev;
       };
     }
   }, [mode]);
@@ -292,8 +293,7 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
         activeIndexRef.current = targetIdx;
         setActiveIndex(targetIdx);
         // Align scroll position so when exiting, the rail stays on this shirt
-        const maxScroll = (garments.length - 1) * SCROLL_DISTANCE_PER_SHIRT;
-        const targetY = (targetIdx / (garments.length - 1)) * maxScroll;
+        const targetY = targetIdx * SCROLL_DISTANCE_PER_SHIRT;
         window.scrollTo({ top: targetY, behavior: "instant" });
         renderRackAt(targetIdx);
       }
@@ -334,8 +334,8 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
           activeSlot,
           {
             x: window.innerWidth < 768 ? 0 : -window.innerWidth * 0.14,
-            y: window.innerWidth < 768 ? -75 : 12,
-            scale: window.innerWidth < 768 ? 0.62 : 1.07,
+            y: window.innerWidth < 768 ? -35 : 0,
+            scale: window.innerWidth < 768 ? 0.62 : Math.min(1.07, window.innerHeight / 680),
             duration: 0.62,
             ease: "power3.inOut",
           },
@@ -375,8 +375,7 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
           setHangerSide("FRONT");
           isAnimatingRef.current = false;
           requestAnimationFrame(() => {
-            const maxScroll = (garments.length - 1) * SCROLL_DISTANCE_PER_SHIRT;
-            const targetY = (currIdx / (garments.length - 1)) * maxScroll;
+            const targetY = currIdx * SCROLL_DISTANCE_PER_SHIRT;
             window.scrollTo({ top: targetY, behavior: "instant" });
             ScrollTrigger.refresh();
             layoutRack(currIdx, false);
@@ -510,7 +509,7 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
       className="relative w-full"
     >
       <div
-        className="sticky top-0 h-screen w-full overflow-hidden"
+        className={`h-screen w-full overflow-hidden ${mode === "INSPECT" ? "fixed inset-x-0 top-0 z-30" : "sticky top-0"}`}
         onPointerDown={(e) => {
           dragStartXRef.current = e.clientX;
         }}

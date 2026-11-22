@@ -197,7 +197,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                             disabled={isOos}
                             onClick={() => handleSelectVariant(garment.id, v.id)}
                             className={
-                              "px-2.5 py-1 text-[11px] font-mono uppercase rounded transition " +
+                              "min-h-11 px-2.5 text-[11px] font-mono uppercase rounded transition " +
                               (isOos
                                 ? "opacity-30 cursor-not-allowed line-through bg-transparent border border-[#141413]/10"
                                 : isSelected
@@ -284,7 +284,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                         key={v.id}
                         onClick={() => setComboVar1Id(v.id)}
                         className={
-                          "px-2.5 py-1 text-[11px] font-mono uppercase rounded transition " +
+                          "min-h-11 px-2.5 text-[11px] font-mono uppercase rounded transition " +
                           (comboVar1Id === v.id
                             ? "bg-[#141413] text-[#F9F8F6] font-medium"
                             : "bg-white text-[#141413] border border-[#141413]/15")
@@ -331,7 +331,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                         key={v.id}
                         onClick={() => setComboVar2Id(v.id)}
                         className={
-                          "px-2.5 py-1 text-[11px] font-mono uppercase rounded transition " +
+                          "min-h-11 px-2.5 text-[11px] font-mono uppercase rounded transition " +
                           (comboVar2Id === v.id
                             ? "bg-[#141413] text-[#F9F8F6] font-medium"
                             : "bg-white text-[#141413] border border-[#141413]/15")

@@ -91,7 +91,7 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
           </Link>
         </div>
 
-        {/* Right: Custom Bag Pill */}
+        {/* Right: Blacko Bag Pill */}
         <div className="flex items-center justify-self-end">
           <button
             ref={mobileBagBtnRef}
@@ -99,11 +99,10 @@ export default function StoreShell({ children }: { children: React.ReactNode }) 
               setDrawerOpen(!drawerOpen);
               setMobileMenuOpen(false);
             }}
-            className="flex min-h-11 items-center gap-1.5 px-2 sm:gap-2.5 sm:px-3.5 rounded-full border border-[#141413]/25 hover:border-[#141413] hover:bg-[#141413]/5 transition text-xs tracking-[0.14em] uppercase font-medium"
+            className="flex min-h-11 items-center gap-1.5 px-2 sm:gap-2.5 sm:px-3.5 rounded-full border border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--accent-tint)_55%,var(--bg-canvas))] hover:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] hover:bg-[var(--accent-tint)] transition-colors text-xs tracking-[0.14em] uppercase font-medium"
           >
-            <span className="hidden sm:inline">Custom Bag</span>
-            <span className="sm:hidden">Bag</span>
-            <span className="font-mono bg-[#141413] text-[#F9F8F6] px-2 py-0.5 rounded-full text-[11px] min-w-[20px] text-center font-normal">
+            <span className="whitespace-nowrap"><span className="sr-only min-[375px]:not-sr-only">Blacko </span>Bag</span>
+            <span className="font-mono bg-[var(--accent-tint)] text-[var(--accent)] px-2 py-0.5 rounded-full text-[11px] min-w-[20px] text-center font-normal">
               {bagItems.length}
             </span>
           </button>

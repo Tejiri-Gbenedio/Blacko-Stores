@@ -467,7 +467,7 @@ export default function FittingRoomExperience({
                 type="button"
                 onClick={handlePackInBag}
                 disabled={!activeGarment || !activeVariant || activeVariant.stockQty < 1 || isPacking}
-                className="w-full lg:max-w-[255px] py-4 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.16em] font-medium hover:bg-[#2B2B28] disabled:opacity-40 transition flex items-center justify-between px-5 shadow-md rounded-sm active:scale-[0.99]"
+                className="w-full lg:max-w-[255px] py-4 shop-primary text-xs uppercase tracking-[0.16em] font-medium disabled:opacity-40 transition flex items-center justify-between px-5 shadow-md rounded-sm active:scale-[0.99]"
               >
                 <span>
                   {shirtSlug === null

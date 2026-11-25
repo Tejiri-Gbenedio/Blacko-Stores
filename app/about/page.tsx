@@ -63,7 +63,7 @@ export default async function AboutPage() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3.5 bg-[#141413] text-[#F9F8F6] text-xs uppercase font-medium tracking-[0.2em] hover:bg-[#141413]/85 transition"
+              className="inline-flex items-center justify-center px-6 py-3.5 shop-primary text-xs uppercase font-medium tracking-[0.2em] transition"
             >
               Browse The Rail
             </Link>

@@ -156,7 +156,7 @@ export default function ContactClient() {
             href="https://wa.me/2348140002910?text=Hello%20Blacko%20Stores%20Atelier,%20I%20would%20like%20to%20inquire%20about%20a%20shirting%20order."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-[#141413] text-[#F9F8F6] text-xs font-mono uppercase tracking-[0.16em] hover:bg-[#141413]/85 transition"
+            className="inline-flex items-center gap-2.5 px-4 py-2.5 shop-primary text-xs font-mono uppercase tracking-[0.16em] transition"
           >
             <span>💬 WhatsApp Concierge</span>
             <span className="text-[10px] opacity-70">(+234 814 000 2910)</span>
@@ -187,7 +187,7 @@ export default function ContactClient() {
               <button
                 type="submit"
                 disabled={trackingLoading}
-                className="px-4 py-2 bg-[#141413] text-[#F9F8F6] text-xs font-mono uppercase tracking-wider hover:bg-[#141413]/85 transition disabled:opacity-50"
+                className="px-4 py-2 shop-primary text-xs font-mono uppercase tracking-wider transition disabled:opacity-50"
               >
                 {trackingLoading ? "Locating..." : "Track"}
               </button>
@@ -327,7 +327,7 @@ export default function ContactClient() {
                     className={
                       "py-2 px-2 text-[11px] font-mono tracking-tight text-center border transition " +
                       (isSelected
-                        ? "bg-[#141413] text-[#F9F8F6] border-[#141413]"
+                        ? "shop-primary border-[var(--accent-button)]"
                         : "bg-white text-[var(--ink-muted)] border-[var(--hairline)] hover:border-[#141413]")
                     }
                   >
@@ -355,7 +355,7 @@ export default function ContactClient() {
           <button
             type="submit"
             disabled={formSubmitting}
-            className="w-full sm:w-auto px-8 py-3.5 bg-[#141413] text-[#F9F8F6] text-xs font-medium uppercase tracking-[0.2em] hover:bg-[#141413]/85 transition disabled:opacity-50"
+            className="w-full sm:w-auto px-8 py-3.5 shop-primary text-xs font-medium uppercase tracking-[0.2em] transition disabled:opacity-50"
           >
             {formSubmitting ? "Transmitting to Atelier..." : "Transmit Message"}
           </button>

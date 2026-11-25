@@ -606,7 +606,7 @@ export default function BoutiqueExperience({ garments }: { garments: GarmentDTO[
           <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={() => enterInspectMode(activeIndex)}
-              className="px-5 md:px-6 py-3 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#2B2B28] transition shadow-sm"
+              className="px-5 md:px-6 py-3 shop-primary text-xs uppercase tracking-[0.18em] font-medium transition shadow-sm"
             >
               Take off the rack
             </button>

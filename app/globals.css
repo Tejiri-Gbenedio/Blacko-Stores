@@ -5,8 +5,27 @@
 :root {
   --bg-canvas: #F9F8F6;
   --ink-primary: #141413;
+  --accent: #A32F43;
+  --accent-button: #B23B50;
+  --accent-tint: #F3E4E5;
   --ink-muted: #76746E;
   --hairline: rgba(20, 20, 19, 0.12);
+}
+
+@layer components {
+  .shop-primary {
+    background-color: var(--accent-button);
+    color: var(--bg-canvas);
+  }
+
+  .shop-primary:hover:not(:disabled) {
+    background-color: var(--accent);
+  }
+
+  .shop-primary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 }
 
 @layer base {

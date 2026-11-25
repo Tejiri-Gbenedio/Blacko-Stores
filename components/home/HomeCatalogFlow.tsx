@@ -72,7 +72,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
       {/* ========================================================= */}
       {/* SECTION 02: Studio Ticker & Manifesto Strip               */}
       {/* ========================================================= */}
-      <section id="manifesto" className="w-full border-t border-[var(--hairline)]">
+      <section id="manifesto" className="w-full bg-[var(--accent-tint)] border-t border-[var(--hairline)]">
         {/* Hairline Marquee Ticker */}
         <div className="w-full border-b border-[var(--hairline)] py-3 overflow-hidden whitespace-nowrap bg-[#F9F8F6]">
           <div className="inline-flex animate-marquee gap-8 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ink-muted)]">
@@ -214,7 +214,7 @@ export default function HomeCatalogFlow({ garments }: HomeCatalogFlowProps) {
                     {/* Pack in Bag Button */}
                     <button
                       onClick={() => handlePackCard(garment)}
-                      className="w-full mt-3 py-2.5 px-4 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.16em] font-medium hover:bg-[#2B2B28] active:scale-[0.98] transition flex items-center justify-between group/btn shadow-sm rounded-sm"
+                      className="w-full mt-3 py-2.5 px-4 shop-primary text-xs uppercase tracking-[0.16em] font-medium active:scale-[0.98] transition flex items-center justify-between group/btn shadow-sm rounded-sm"
                     >
                       <span>Pack in Bag</span>
                       <span className="font-mono text-xs group-hover/btn:translate-x-0.5 group-hover/btn:translate-y-0.5 transition-transform">

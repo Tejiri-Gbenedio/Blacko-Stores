@@ -253,7 +253,7 @@ export default function QuickInspectModal({
             <button
               onClick={handlePutInBag}
               disabled={selectedVariant.stockQty < 1}
-              className="w-full py-3.5 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#2B2B28] disabled:opacity-40 transition flex items-center justify-center gap-3 shadow-md rounded-sm active:scale-[0.99]"
+              className="w-full py-3.5 shop-primary text-xs uppercase tracking-[0.2em] font-medium disabled:opacity-40 transition flex items-center justify-center gap-3 shadow-md rounded-sm active:scale-[0.99]"
             >
               <span>Fold &amp; Put in Custom Bag</span>
               <span className="font-mono text-sm">↘</span>

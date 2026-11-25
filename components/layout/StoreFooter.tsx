@@ -179,7 +179,7 @@ export default function StoreFooter() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-4 py-2 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.16em] font-medium hover:bg-[#2B2B28] disabled:opacity-50 transition rounded-sm flex items-center gap-1.5"
+                className="px-4 py-2 shop-primary text-xs uppercase tracking-[0.16em] font-medium disabled:opacity-50 transition rounded-sm flex items-center gap-1.5"
               >
                 {submitting ? "Joining..." : "Join →"}
               </button>

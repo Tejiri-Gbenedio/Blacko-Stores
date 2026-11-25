@@ -132,7 +132,7 @@ export default function InspectPanel({
         <button
           onClick={onPutInBag}
           disabled={selectedVariant.stockQty < 1}
-          className="mt-5 w-full py-3.5 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#2C241E] disabled:opacity-40 transition flex items-center justify-center gap-2.5 shadow-md"
+          className="mt-5 w-full py-3.5 shop-primary text-xs uppercase tracking-[0.2em] font-medium disabled:opacity-40 transition flex items-center justify-center gap-2.5 shadow-md"
         >
           <span>Fold &amp; Put in Custom Bag</span>
           <span>↘</span>

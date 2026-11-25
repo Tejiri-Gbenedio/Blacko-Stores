@@ -298,7 +298,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
             <button
               type="submit"
               disabled={loggingIn}
-              className="mt-2 w-full py-3.5 bg-[#141413] text-[#F9F8F6] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#2B2B28] disabled:opacity-50 transition rounded-sm shadow"
+              className="mt-2 w-full py-3.5 shop-primary text-xs uppercase tracking-[0.2em] font-medium disabled:opacity-50 transition rounded-sm shadow"
             >
               {loggingIn ? "Verifying..." : "Enter Atelier →"}
             </button>
@@ -795,7 +795,7 @@ export default function AdminDashboard({ initialAuthenticated = false }: AdminDa
                 type="button"
                 onClick={handleCopyAllEmails}
                 disabled={subscribers.length === 0}
-                className="px-4 py-2 bg-[#141413] text-[#F9F8F6] text-xs font-mono uppercase tracking-wider rounded-sm hover:bg-[#2B2B28] disabled:opacity-40 transition flex items-center gap-2 self-start sm:self-auto"
+                className="px-4 py-2 shop-primary text-xs font-mono uppercase tracking-wider rounded-sm disabled:opacity-40 transition flex items-center gap-2 self-start sm:self-auto"
               >
                 <span>{copiedEmails ? "✓ Copied to Clipboard!" : "Copy All Emails 📋"}</span>
               </button>
